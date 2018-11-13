@@ -1,11 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
 module VHDLpSyntax (
-    Entity(..), Signal(..), SMod(..), VTyp(..)
+    Entity(..), Signal(..), SMod(..), VTyp(..), cmm, isCmm
   , toVHDLTy
 ) where
 
 import Data.Text.Lazy (Text)
 import qualified Data.Text.Lazy as T (append)
+-- import Data.Char (isSpace)
 -- http://insights.sigasi.com/tech/vhdl2008.ebnf.html#name
 
 -- https://surf-vhdl.com/vhdl-syntax-web-course-surf-vhdl/vhdl-entity/
@@ -52,10 +53,13 @@ data VTyp  = U | X | L0 | L1 | Z | W | L | H | DC
            | I | R Text Text 
   deriving (Eq, Show)
 
-
-
 -- misc
+cmm :: Text -> Signal
+cmm = Signal "" IN U
 
+isCmm :: Signal -> Bool
+isCmm s = (sig_name s) == " "
+ 
 toVHDLTy :: VTyp -> Text
 toVHDLTy (SLV efrom eto)  = "std_logic_vector" `T.append` "(" `T.append` efrom `T.append` " downto " `T.append` eto
 toVHDLTy (R efrom eto)    = "integer range" `T.append` efrom `T.append` " downto " `T.append` eto

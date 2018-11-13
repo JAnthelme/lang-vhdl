@@ -71,21 +71,20 @@ pps = [Com "board signals"
       ]
 -}
 
-comm = Signal "" IN U 
 ps3= [
-     comm "board inputs"
+     cmm "board inputs"
     ,Signal "ib_MAX10_CLK1_50"  IN    U       ""
     ,Signal "ib_SW"             IN    (SLV "2" "0") ""
-    ,comm "board outputs"
-    ,comm "vga port"
+    ,cmm "board outputs"
+    ,cmm "vga port"
     ,Signal "ob_VGA_HS"         OUT   U       ""
     ,Signal "ob_VGA_VS"         OUT   U       ""
     ,Signal "ob_VGA_R "         OUT   (SLV "3" "0") "" 
     ,Signal "ob_VGA_G "         OUT   (SLV "3" "0") ""
     ,Signal "ob_VGA_B "         OUT   (SLV "3" "0") ""
-    ,comm "others"
+    ,cmm "others"
     ,Signal "ob_LEDR  "         OUT   (SLV "9" "0") ""
-    ,comm "OV7670 camera"
+    ,cmm "OV7670 camera"
     ,Signal "ov7670_xclk"       OUT   U       "mclk / gpio[20] (pin 23)" 
     ,Signal "ov7670_pclk"       IN    U       "pclk / gpio[21] (pin 24)" 
     ,Signal "ov7670_siod"       INOUT U       "sda  / gpio[22] (pin 25)" 
