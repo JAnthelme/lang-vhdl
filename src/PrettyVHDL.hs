@@ -84,7 +84,7 @@ tabulate
 tabulate xss spcs = foldl1 (zipWith (<+>)) tabs 
   where maxs = map (fromIntegral . (maximum . (map T.length))) xss :: [Int]
         tabs = zipWith fll maxs xss
-        fll i xs = map ((fill i) . pretty) xs
+        fll i xs = map ((fill i) . pretty) xs  -- here try \ i x -> if x  == "" then emptyDoc  else fill i $ pretty
         
 
 -- | append text to all but last text in a list
